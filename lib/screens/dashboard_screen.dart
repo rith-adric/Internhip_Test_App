@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:my_app/models/product.dart';
+import 'package:my_app/utils/colorss.dart';
 import 'package:provider/provider.dart';
 import '../providers/product_provider.dart';
 import '../screens/add_screen.dart';
@@ -60,7 +61,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   void _showSortDialog(BuildContext context) {
     showModalBottomSheet(
       context: context,
-      backgroundColor: const Color(0xFF2A4A6F),
+      backgroundColor: AppColors.backgroundColor,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
@@ -75,17 +76,17 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   child: Text(
                     'Sort By',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: AppColors.whiteColor,
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
                 ListTile(
-                  leading: const Icon(Icons.sort, color: Colors.white),
+                  leading: const Icon(Icons.sort, color: AppColors.whiteColor),
                   title: const Text(
                     'None',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: AppColors.whiteColor),
                   ),
                   onTap: () {
                     provider.setSortOption(SortOption.none);
@@ -94,10 +95,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   selected: provider.sortOption == SortOption.none,
                 ),
                 ListTile(
-                  leading: const Icon(Icons.arrow_upward, color: Colors.white),
+                  leading: const Icon(Icons.arrow_upward, color: AppColors.whiteColor),
                   title: const Text(
                     'Price: Low to High',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: AppColors.whiteColor),
                   ),
                   onTap: () {
                     provider.setSortOption(SortOption.priceAsc);
@@ -108,11 +109,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 ListTile(
                   leading: const Icon(
                     Icons.arrow_downward,
-                    color: Colors.white,
+                    color: AppColors.whiteColor,
                   ),
                   title: const Text(
                     'Price: High to Low',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: AppColors.whiteColor),
                   ),
                   onTap: () {
                     provider.setSortOption(SortOption.priceDesc);
@@ -121,10 +122,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   selected: provider.sortOption == SortOption.priceDesc,
                 ),
                 ListTile(
-                  leading: const Icon(Icons.arrow_upward, color: Colors.white),
+                  leading: const Icon(Icons.arrow_upward, color: AppColors.whiteColor),
                   title: const Text(
                     'Stock: Low to High',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: AppColors.whiteColor),
                   ),
                   onTap: () {
                     provider.setSortOption(SortOption.stockAsc);
@@ -135,11 +136,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 ListTile(
                   leading: const Icon(
                     Icons.arrow_downward,
-                    color: Colors.white,
+                    color: AppColors.whiteColor,
                   ),
                   title: const Text(
                     'Stock: High to Low',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: AppColors.whiteColor),
                   ),
                   onTap: () {
                     provider.setSortOption(SortOption.stockDesc);
@@ -173,17 +174,17 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   child: Text(
                     'Export Products',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: AppColors.whiteColor,
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
                 ListTile(
-                  leading: const Icon(Icons.picture_as_pdf, color: Colors.red),
+                  leading: const Icon(Icons.picture_as_pdf, color: AppColors.red),
                   title: const Text(
                     'Export to PDF',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: AppColors.whiteColor),
                   ),
                   onTap: () async {
                     Navigator.pop(context);
@@ -195,10 +196,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   },
                 ),
                 ListTile(
-                  leading: const Icon(Icons.table_chart, color: Colors.green),
+                  leading: const Icon(Icons.table_chart, color: AppColors.buttonSecondary),
                   title: const Text(
                     'Export to CSV',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: AppColors.whiteColor),
                   ),
                   onTap: () async {
                     Navigator.pop(context);
@@ -227,7 +228,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         context: context,
         barrierDismissible: false,
         builder: (context) => const Center(
-          child: CircularProgressIndicator(color: Color(0xFFFF6B35)),
+          child: CircularProgressIndicator(color: AppColors.orange),
         ),
       );
 
@@ -244,7 +245,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('$format file $locationMessage\nPath: ${file.path}'),
-            backgroundColor: Colors.green,
+            backgroundColor: AppColors.buttonSecondary,
             duration: const Duration(seconds: 4),
           ),
         );
@@ -255,7 +256,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('Export failed: $e'),
-            backgroundColor: Colors.red,
+            backgroundColor: AppColors.red,
           ),
         );
       }
@@ -270,18 +271,18 @@ class _DashboardScreenState extends State<DashboardScreen> {
           backgroundColor: const Color(0xFF2A4A6F),
           title: const Text(
             'Delete Product',
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: AppColors.whiteColor),
           ),
           content: Text(
             'Are you sure you want to delete "$name"?',
-            style: const TextStyle(color: Colors.white70),
+            style: const TextStyle(color: AppColors.white70),
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
               child: const Text(
                 'Cancel',
-                style: TextStyle(color: Colors.white70),
+                style: TextStyle(color: AppColors.white70),
               ),
             ),
             TextButton(
@@ -296,7 +297,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
                         content: Text('Product deleted successfully'),
-                        backgroundColor: Colors.green,
+                        backgroundColor: AppColors.buttonSecondary,
                       ),
                     );
                   }
@@ -305,13 +306,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: Text('Error: $e'),
-                        backgroundColor: Colors.red,
+                        backgroundColor: AppColors.red,
                       ),
                     );
                   }
                 }
               },
-              child: const Text('Delete', style: TextStyle(color: Colors.red)),
+              child: const Text('Delete', style: TextStyle(color: AppColors.red)),
             ),
           ],
         );
@@ -322,23 +323,23 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF1E3A5F),
+      backgroundColor: AppColors.backgroundColor,
       appBar: AppBar(
-        backgroundColor: const Color(0xFF1E3A5F),
+        backgroundColor: AppColors.backgroundColor,
         elevation: 0,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Icon(
               Icons.local_fire_department,
-              color: Color(0xFFFF6B35),
+              color: AppColors.buttonPrimary,
               size: 24,
             ),
             const SizedBox(width: 8),
             const Text(
               'Flutter CRUD',
               style: TextStyle(
-                color: Colors.white,
+                color: AppColors.whiteColor,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -347,11 +348,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
         centerTitle: true,
         actions: [
           IconButton(
-            icon: const Icon(Icons.sort, color: Colors.white),
+            icon: const Icon(Icons.sort, color: AppColors.whiteColor),
             onPressed: () => _showSortDialog(context),
           ),
           IconButton(
-            icon: const Icon(Icons.file_download, color: Colors.white),
+            icon: const Icon(Icons.file_download, color: AppColors.whiteColor),
             onPressed: () => _showExportDialog(context),
           ),
         ],
@@ -364,18 +365,18 @@ class _DashboardScreenState extends State<DashboardScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(Icons.error_outline, color: Colors.red, size: 48),
+                  const Icon(Icons.error_outline, color: AppColors.red, size: 48),
                   const SizedBox(height: 16),
                   Text(
                     'Error: ${productProvider.error}',
-                    style: const TextStyle(color: Colors.white),
+                    style: const TextStyle(color: AppColors.whiteColor),
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 16),
                   ElevatedButton(
                     onPressed: () => productProvider.refreshProducts(),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFFFF6B35),
+                      backgroundColor: AppColors.buttonPrimary,
                     ),
                     child: const Text('Retry'),
                   ),
@@ -392,16 +393,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 child: TextField(
                   controller: _searchController,
                   onChanged: _onSearchChanged,
-                  style: const TextStyle(color: Colors.white),
+                  style: const TextStyle(color: AppColors.whiteColor),
                   decoration: InputDecoration(
                     hintText: 'Search products...',
-                    hintStyle: const TextStyle(color: Colors.white54),
-                    prefixIcon: const Icon(Icons.search, color: Colors.white70),
+                    hintStyle: const TextStyle(color: AppColors.white54),
+                    prefixIcon: const Icon(Icons.search, color: AppColors.white70),
                     suffixIcon: _searchController.text.isNotEmpty
                         ? IconButton(
                             icon: const Icon(
                               Icons.clear,
-                              color: Colors.white70,
+                              color: AppColors.white70,
                             ),
                             onPressed: () {
                               _searchController.clear();
@@ -422,7 +423,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                       borderSide: const BorderSide(
-                        color: Color(0xFFFF6B35),
+                        color: AppColors.buttonPrimary,
                         width: 2,
                       ),
                     ),
@@ -436,19 +437,19 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     ? Center(
                         child: productProvider.isLoading
                             ? const CircularProgressIndicator(
-                                color: Color(0xFFFF6B35),
+                                color: AppColors.buttonPrimary,
                               )
                             : const Text(
                                 'No products found. Tap + to add one!',
                                 style: TextStyle(
-                                  color: Colors.white,
+                                  color: AppColors.whiteColor,
                                   fontSize: 16,
                                 ),
                               ),
                       )
                     : RefreshIndicator(
                         onRefresh: () => productProvider.refreshProducts(),
-                        color: const Color(0xFFFF6B35),
+                        color: AppColors.buttonPrimary,
                         child: ListView.builder(
                           controller: _scrollController,
                           padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -461,7 +462,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                 padding: EdgeInsets.all(16),
                                 child: Center(
                                   child: CircularProgressIndicator(
-                                    color: Color(0xFFFF6B35),
+                                    color: AppColors.orange,
                                   ),
                                 ),
                               );
@@ -473,7 +474,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12),
                               ),
-                              color: const Color(0xFF2A4A6F),
+                              color: AppColors.backgroundColor,
                               child: InkWell(
                                 onTap: () {
                                   Navigator.push(
@@ -497,7 +498,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                             Text(
                                               product.name,
                                               style: const TextStyle(
-                                                color: Colors.white,
+                                                color: AppColors.whiteColor,
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.bold,
                                               ),
@@ -506,7 +507,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                             Text(
                                               'Price: \$${product.price.toStringAsFixed(2)}',
                                               style: const TextStyle(
-                                                color: Colors.white70,
+                                                color: AppColors.white70,
                                                 fontSize: 14,
                                               ),
                                             ),
@@ -514,7 +515,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                             Text(
                                               'Stock: ${product.stock}',
                                               style: const TextStyle(
-                                                color: Colors.white70,
+                                                color: AppColors.white70,
                                                 fontSize: 14,
                                               ),
                                             ),
@@ -524,7 +525,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                       IconButton(
                                         icon: const Icon(
                                           Icons.delete,
-                                          color: Colors.red,
+                                          color: AppColors.red,
                                         ),
                                         onPressed: () => _deleteProduct(
                                           context,
@@ -552,8 +553,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
             MaterialPageRoute(builder: (context) => const AddScreen()),
           );
         },
-        backgroundColor: const Color(0xFFFF6B35),
-        child: const Icon(Icons.add, color: Colors.white),
+        backgroundColor: AppColors.whiteColor,
+        child: const Icon(Icons.add, color: AppColors.whiteColor),
       ),
     );
   }

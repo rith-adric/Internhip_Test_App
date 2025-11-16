@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/utils/colorss.dart';
 import 'package:provider/provider.dart';
 import '../providers/product_provider.dart';
 import '../models/product.dart';
@@ -97,7 +98,7 @@ class _EditScreenState extends State<EditScreen> {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text('Product updated successfully'),
-              backgroundColor: Colors.green,
+              backgroundColor: AppColors.buttonSecondary,
             ),
           );
         }
@@ -107,7 +108,7 @@ class _EditScreenState extends State<EditScreen> {
             _error = e.toString();
           });
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Error: $e'), backgroundColor: Colors.red),
+            SnackBar(content: Text('Error: $e'), backgroundColor: AppColors.red),
           );
         }
       } finally {
@@ -125,21 +126,21 @@ class _EditScreenState extends State<EditScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: const Color(0xFF2A4A6F),
+          backgroundColor: AppColors.backgroundColor,
           title: const Text(
             'Delete Product',
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: AppColors.whiteColor),
           ),
           content: Text(
             'Are you sure you want to delete "${_product?.name ?? 'this product'}"?',
-            style: const TextStyle(color: Colors.white70),
+            style: const TextStyle(color: AppColors.white70),
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
               child: const Text(
                 'Cancel',
-                style: TextStyle(color: Colors.white70),
+                style: TextStyle(color: AppColors.white70),
               ),
             ),
             TextButton(
@@ -155,7 +156,7 @@ class _EditScreenState extends State<EditScreen> {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
                         content: Text('Product deleted successfully'),
-                        backgroundColor: Colors.green,
+                        backgroundColor: AppColors.buttonSecondary,
                       ),
                     );
                   }
@@ -164,13 +165,13 @@ class _EditScreenState extends State<EditScreen> {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: Text('Error: $e'),
-                        backgroundColor: Colors.red,
+                        backgroundColor: AppColors.red,
                       ),
                     );
                   }
                 }
               },
-              child: const Text('Delete', style: TextStyle(color: Colors.red)),
+              child: const Text('Delete', style: TextStyle(color: AppColors.red)),
             ),
           ],
         );
@@ -182,12 +183,12 @@ class _EditScreenState extends State<EditScreen> {
   Widget build(BuildContext context) {
     if (_isLoading) {
       return Scaffold(
-        backgroundColor: const Color(0xFF1E3A5F),
+        backgroundColor: AppColors.backgroundColor,
         appBar: AppBar(
-          backgroundColor: const Color(0xFF1E3A5F),
+          backgroundColor: AppColors.backgroundColor,
           elevation: 0,
           leading: IconButton(
-            icon: const Icon(Icons.arrow_back, color: Colors.white),
+            icon: const Icon(Icons.arrow_back, color: AppColors.whiteColor),
             onPressed: () => Navigator.pop(context),
           ),
           title: Row(
@@ -195,14 +196,14 @@ class _EditScreenState extends State<EditScreen> {
             children: [
               const Icon(
                 Icons.local_fire_department,
-                color: Color(0xFFFF6B35),
+                color: AppColors.orange,
                 size: 24,
               ),
               const SizedBox(width: 8),
               const Text(
                 'Flutter CRUD',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: AppColors.whiteColor,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -211,19 +212,19 @@ class _EditScreenState extends State<EditScreen> {
           centerTitle: true,
         ),
         body: const Center(
-          child: CircularProgressIndicator(color: Color(0xFFFF6B35)),
+          child: CircularProgressIndicator(color: AppColors.orange),
         ),
       );
     }
 
     if (_error != null && _product == null) {
       return Scaffold(
-        backgroundColor: const Color(0xFF1E3A5F),
+        backgroundColor: AppColors.backgroundColor,
         appBar: AppBar(
-          backgroundColor: const Color(0xFF1E3A5F),
+          backgroundColor: AppColors.backgroundColor,
           elevation: 0,
           leading: IconButton(
-            icon: const Icon(Icons.arrow_back, color: Colors.white),
+            icon: const Icon(Icons.arrow_back, color: AppColors.whiteColor),
             onPressed: () => Navigator.pop(context),
           ),
           title: Row(
@@ -231,14 +232,14 @@ class _EditScreenState extends State<EditScreen> {
             children: [
               const Icon(
                 Icons.local_fire_department,
-                color: Color(0xFFFF6B35),
+                color: AppColors.orange,
                 size: 24,
               ),
               const SizedBox(width: 8),
               const Text(
-                'FlutterFire CRUD',
+                'Flutter CRUD',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: AppColors.whiteColor,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -250,18 +251,18 @@ class _EditScreenState extends State<EditScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Icon(Icons.error_outline, color: Colors.red, size: 48),
+              const Icon(Icons.error_outline, color: AppColors.red, size: 48),
               const SizedBox(height: 16),
               Text(
                 'Error: $_error',
-                style: const TextStyle(color: Colors.white),
+                style: const TextStyle(color: AppColors.whiteColor),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 16),
               ElevatedButton(
                 onPressed: _loadProduct,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFFFF6B35),
+                  backgroundColor: AppColors.orange,
                 ),
                 child: const Text('Retry'),
               ),
@@ -272,12 +273,12 @@ class _EditScreenState extends State<EditScreen> {
     }
 
     return Scaffold(
-      backgroundColor: const Color(0xFF1E3A5F),
+      backgroundColor: AppColors.backgroundColor,
       appBar: AppBar(
-        backgroundColor: const Color(0xFF1E3A5F),
+        backgroundColor: AppColors.backgroundColor,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          icon: const Icon(Icons.arrow_back, color: AppColors.whiteColor),
           onPressed: () => Navigator.pop(context),
         ),
         title: Row(
@@ -285,14 +286,14 @@ class _EditScreenState extends State<EditScreen> {
           children: [
             const Icon(
               Icons.local_fire_department,
-              color: Color(0xFFFF6B35),
+              color: AppColors.orange,
               size: 24,
             ),
             const SizedBox(width: 8),
             const Text(
               'FlutterFire CRUD',
               style: TextStyle(
-                color: Colors.white,
+                color: AppColors.whiteColor,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -301,7 +302,7 @@ class _EditScreenState extends State<EditScreen> {
         centerTitle: true,
         actions: [
           IconButton(
-            icon: const Icon(Icons.delete, color: Colors.red),
+            icon: const Icon(Icons.delete, color: AppColors.red),
             onPressed: _deleteProduct,
           ),
         ],
@@ -316,18 +317,18 @@ class _EditScreenState extends State<EditScreen> {
                 padding: const EdgeInsets.all(12),
                 margin: const EdgeInsets.only(bottom: 16),
                 decoration: BoxDecoration(
-                  color: Colors.red.withOpacity(0.2),
+                  color: AppColors.red.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: Colors.red),
+                  border: Border.all(color: AppColors.red),
                 ),
                 child: Row(
                   children: [
-                    const Icon(Icons.error_outline, color: Colors.red),
+                    const Icon(Icons.error_outline, color: AppColors.red),
                     const SizedBox(width: 8),
                     Expanded(
                       child: Text(
                         _error!,
-                        style: const TextStyle(color: Colors.red),
+                        style: const TextStyle(color: AppColors.red),
                       ),
                     ),
                   ],
@@ -337,7 +338,7 @@ class _EditScreenState extends State<EditScreen> {
             const Text(
               'Name',
               style: TextStyle(
-                color: Colors.white,
+                color: AppColors.whiteColor,
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
               ),
@@ -345,12 +346,12 @@ class _EditScreenState extends State<EditScreen> {
             const SizedBox(height: 8),
             TextFormField(
               controller: _nameController,
-              style: const TextStyle(color: Colors.white),
+              style: const TextStyle(color: AppColors.whiteColor),
               decoration: InputDecoration(
                 hintText: 'Enter product name',
-                hintStyle: const TextStyle(color: Colors.white54),
+                hintStyle: const TextStyle(color: AppColors.white54),
                 filled: true,
-                fillColor: const Color(0xFF2A4A6F),
+                fillColor: AppColors.backgroundColor,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide.none,
@@ -362,17 +363,17 @@ class _EditScreenState extends State<EditScreen> {
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: const BorderSide(
-                    color: Color(0xFFFF6B35),
+                    color: AppColors.orange,
                     width: 2,
                   ),
                 ),
                 errorBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
-                  borderSide: const BorderSide(color: Colors.red, width: 2),
+                  borderSide: const BorderSide(color: AppColors.red, width: 2),
                 ),
                 focusedErrorBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
-                  borderSide: const BorderSide(color: Colors.red, width: 2),
+                  borderSide: const BorderSide(color: AppColors.red, width: 2),
                 ),
               ),
               validator: (value) {
@@ -389,7 +390,7 @@ class _EditScreenState extends State<EditScreen> {
             const Text(
               'Price',
               style: TextStyle(
-                color: Colors.white,
+                color: AppColors.whiteColor,
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
               ),
@@ -397,13 +398,13 @@ class _EditScreenState extends State<EditScreen> {
             const SizedBox(height: 8),
             TextFormField(
               controller: _priceController,
-              style: const TextStyle(color: Colors.white),
+              style: const TextStyle(color: AppColors.whiteColor),
               keyboardType: TextInputType.numberWithOptions(decimal: true),
               decoration: InputDecoration(
                 hintText: 'Enter price',
-                hintStyle: const TextStyle(color: Colors.white54),
+                hintStyle: const TextStyle(color: AppColors.white54),
                 filled: true,
-                fillColor: const Color(0xFF2A4A6F),
+                fillColor: AppColors.backgroundColor,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide.none,
@@ -415,17 +416,17 @@ class _EditScreenState extends State<EditScreen> {
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: const BorderSide(
-                    color: Color(0xFFFF6B35),
+                    color: AppColors.orange,
                     width: 2,
                   ),
                 ),
                 errorBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
-                  borderSide: const BorderSide(color: Colors.red, width: 2),
+                  borderSide: const BorderSide(color: AppColors.red, width: 2),
                 ),
                 focusedErrorBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
-                  borderSide: const BorderSide(color: Colors.red, width: 2),
+                  borderSide: const BorderSide(color: AppColors.red, width: 2),
                 ),
               ),
               validator: (value) {
@@ -442,7 +443,7 @@ class _EditScreenState extends State<EditScreen> {
             const Text(
               'Stock',
               style: TextStyle(
-                color: Colors.white,
+                color: AppColors.whiteColor,
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
               ),
@@ -450,13 +451,13 @@ class _EditScreenState extends State<EditScreen> {
             const SizedBox(height: 8),
             TextFormField(
               controller: _stockController,
-              style: const TextStyle(color: Colors.white),
+              style: const TextStyle(color: AppColors.whiteColor),
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 hintText: 'Enter stock quantity',
-                hintStyle: const TextStyle(color: Colors.white54),
+                hintStyle: const TextStyle(color: AppColors.white54),
                 filled: true,
-                fillColor: const Color(0xFF2A4A6F),
+                fillColor: AppColors.backgroundColor,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide.none,
@@ -468,17 +469,17 @@ class _EditScreenState extends State<EditScreen> {
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: const BorderSide(
-                    color: Color(0xFFFF6B35),
+                    color: AppColors.orange,
                     width: 2,
                   ),
                 ),
                 errorBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
-                  borderSide: const BorderSide(color: Colors.red, width: 2),
+                  borderSide: const BorderSide(color: AppColors.red, width: 2),
                 ),
                 focusedErrorBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
-                  borderSide: const BorderSide(color: Colors.red, width: 2),
+                  borderSide: const BorderSide(color: AppColors.red, width: 2),
                 ),
               ),
               validator: (value) {
@@ -498,7 +499,7 @@ class _EditScreenState extends State<EditScreen> {
               child: ElevatedButton(
                 onPressed: _isSubmitting ? null : _updateProduct,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFFFF6B35),
+                  backgroundColor: AppColors.orange,
                   disabledBackgroundColor: Colors.grey,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
@@ -511,14 +512,14 @@ class _EditScreenState extends State<EditScreen> {
                         child: CircularProgressIndicator(
                           strokeWidth: 2,
                           valueColor: AlwaysStoppedAnimation<Color>(
-                            Colors.white,
+                            AppColors.whiteColor,
                           ),
                         ),
                       )
                     : const Text(
                         'UPDATE ITEM',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: AppColors.whiteColor,
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                           letterSpacing: 1,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/utils/colorss.dart';
 import 'package:provider/provider.dart';
 import 'providers/product_provider.dart';
 import 'screens/dashboard_screen.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter CRUD',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFFFF6B35)),
+          colorScheme: ColorScheme.fromSeed(seedColor: AppColors.orange),
           useMaterial3: true,
         ),
         home: const DashboardScreen(),
