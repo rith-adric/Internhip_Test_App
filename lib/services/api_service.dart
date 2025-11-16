@@ -39,7 +39,6 @@ class ApiService {
       if (response.statusCode == 200) {
         final responseData = json.decode(response.body);
 
-        // Handle wrapped response: { success, message, data: [...] }
         List<dynamic> productsList;
         if (responseData is Map && responseData.containsKey('data')) {
           productsList = responseData['data'] as List<dynamic>;
@@ -65,7 +64,6 @@ class ApiService {
       if (response.statusCode == 200) {
         final responseData = json.decode(response.body);
 
-        // Handle wrapped response: { success, message, data: {...} }
         Map<String, dynamic> productData;
         if (responseData is Map && responseData.containsKey('data')) {
           productData = Map<String, dynamic>.from(responseData['data'] as Map);
@@ -151,7 +149,6 @@ class ApiService {
       if (response.statusCode == 200) {
         final responseData = json.decode(response.body);
 
-        // Handle wrapped response: { success, message, data: {...} }
         Map<String, dynamic> productData;
         if (responseData is Map && responseData.containsKey('data')) {
           productData = Map<String, dynamic>.from(responseData['data'] as Map);

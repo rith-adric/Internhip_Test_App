@@ -10,6 +10,7 @@ class AppColors {
   static const Color red = Colors.red;
   static const Color white54 = Colors.white54;
   static const Color white70 = Colors.white70;
+  static const Color textFormFeild = Color(0xFF2A4A6F);
 
   // Text colors
   static const Color textPrimary = Color(0xFF333333);

@@ -42,7 +42,7 @@ class _AddScreenState extends State<AddScreen> {
         ).addProduct(name, price, stock);
 
         if (mounted) {
-          Navigator.pop(context); // Go back to dashboard
+          Navigator.pop(context);
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text('Product added successfully'),
@@ -119,7 +119,7 @@ class _AddScreenState extends State<AddScreen> {
                 hintText: 'Enter product name',
                 hintStyle: const TextStyle(color: AppColors.white54),
                 filled: true,
-                fillColor: const Color(0xFF2A4A6F),
+                fillColor: AppColors.textFormFeild,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide.none,
@@ -172,7 +172,7 @@ class _AddScreenState extends State<AddScreen> {
                 hintText: 'Enter price',
                 hintStyle: const TextStyle(color: AppColors.white54),
                 filled: true,
-                fillColor: const Color(0xFF2A4A6F),
+                fillColor: AppColors.textFormFeild,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide.none,
@@ -226,7 +226,7 @@ class _AddScreenState extends State<AddScreen> {
                 hintText: 'Enter stock quantity',
                 hintStyle: const TextStyle(color: AppColors.white54),
                 filled: true,
-                fillColor: const Color(0xFF2A4A6F),
+                fillColor: AppColors.textFormFeild,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide.none,
